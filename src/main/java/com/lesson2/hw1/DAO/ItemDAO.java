@@ -1,6 +1,6 @@
-package com.lesson1.hw1.DAO;
+package com.lesson2.hw1.DAO;
 
-import com.lesson1.hw1.entity.Item;
+import com.lesson2.hw1.entity.Item;
 
 import java.util.ArrayList;
 import java.util.List;

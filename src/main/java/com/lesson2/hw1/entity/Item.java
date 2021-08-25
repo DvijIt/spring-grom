@@ -1,4 +1,4 @@
-package com.lesson1.hw1.entity;
+package com.lesson2.hw1.entity;
 
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,7 @@
-package com.lesson1.hw1.service;
+package com.lesson2.hw1.service;
 
-import com.lesson1.hw1.DAO.ItemDAO;
-import com.lesson1.hw1.entity.Item;
+import com.lesson2.hw1.DAO.ItemDAO;
+import com.lesson2.hw1.entity.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;

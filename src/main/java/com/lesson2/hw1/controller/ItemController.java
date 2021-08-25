@@ -1,7 +1,7 @@
-package com.lesson1.hw1.controller;
+package com.lesson2.hw1.controller;
 
-import com.lesson1.hw1.entity.Item;
-import com.lesson1.hw1.service.ItemService;
+import com.lesson2.hw1.entity.Item;
+import com.lesson2.hw1.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
