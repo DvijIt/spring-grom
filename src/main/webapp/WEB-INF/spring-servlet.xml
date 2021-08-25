@@ -5,4 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com"/>
+
+    <bean id="itemService" class="com.lesson1.hw1.service.ItemService"/>
+    <bean id="itemDAO" class="com.lesson1.hw1.DAO.ItemDAO"/>
 </beans>
