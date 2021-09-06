@@ -6,9 +6,11 @@ import com.lesson3.hw.model.Storage;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.type.IntegerType;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
 
+@Repository
 public class StorageDAO extends GeneralDAO<Storage> implements StorageDAOInterface {
 
     private static final String SQL_INCREASE_SIZE = "UPDATE STORAGE SET STORAGE_SIZE = STORAGE_SIZE+ :size WHERE ID = :storageId";

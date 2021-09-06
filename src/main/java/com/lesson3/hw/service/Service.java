@@ -20,7 +20,7 @@ public class Service implements ServiceInterface {
     }
 
     @Override
-    public File put(Storage storage, File file) throws InternalServerError {
+    public File put(Storage storage, File file) throws InternalServerError, BadRequestException {
         file.setStorage(storage);
         validateFile(storage, file);
 
@@ -28,7 +28,7 @@ public class Service implements ServiceInterface {
     }
 
     @Override
-    public File delete(Storage storage, File file) throws InternalServerError {
+    public File delete(Storage storage, File file) throws InternalServerError, BadRequestException {
         file.setStorage(storage);
         if(storageDAO.checkStorageOnExistingFiles(file) == 0)
             throw new BadRequestException(getClass().getName()+"-checkStorageOnExistingFiles. There is no file id: "+file.getId()+" on storage id: "+storage.getId());
@@ -36,7 +36,7 @@ public class Service implements ServiceInterface {
     }
 
     @Override
-    public void transferAll(Storage storageFrom, Storage storageTo) throws InternalServerError{
+    public void transferAll(Storage storageFrom, Storage storageTo) throws InternalServerError, BadRequestException {
         //check if exists
         if(storageDAO.checkStorageOnExistingFiles(storageFrom, storageTo) > 0)
             throw new BadRequestException(getClass().getName()+"-checkStorageOnExistingFiles. There is existing file from Storage id:"+storageFrom.getId()+" in Storage id:"+storageTo.getId());
@@ -56,7 +56,7 @@ public class Service implements ServiceInterface {
     }
 
     @Override
-    public void transferFile(Storage storageFrom, Storage storageTo, Long id) throws InternalServerError{
+    public void transferFile(Storage storageFrom, Storage storageTo, Long id) throws InternalServerError, BadRequestException {
         File file = fileDAO.findById(id);
         file.setStorage(storageTo);
 
@@ -65,7 +65,7 @@ public class Service implements ServiceInterface {
         fileDAO.transferFile(storageFrom, storageTo, file);
     }
 
-    private void validateFile(Storage storage, File file) throws InternalServerError{
+    private void validateFile(Storage storage, File file) throws InternalServerError, BadRequestException {
         //check if exists
         file.setStorage(storage);
         if(storageDAO.checkStorageOnExistingFiles(file) > 0)
@@ -77,7 +77,7 @@ public class Service implements ServiceInterface {
         checkFileFormat(storage, file);
     }
 
-    private void checkFileFormat(Storage storage, File file){
+    private void checkFileFormat(Storage storage, File file) throws BadRequestException {
         for(String format : storage.getFormatsSupported().split(","))
             if(format.equals(file.getFormat()))
                 return;

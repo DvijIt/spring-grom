@@ -21,7 +21,7 @@ public abstract class GeneralDAO<T extends Model> implements GeneralDAOInterface
         this.clazz = clazzToSet;
     }
 
-    public T findById(Long id) throws InternalServerError{
+    public T findById(Long id) throws InternalServerError, BadRequestException {
         try (Session session = createSessionFactory().openSession()) {
 
             return session.get(clazz, id);
